@@ -3,5 +3,13 @@
     "extends": [
                   "github>hotchkj/renovate-config-test:general",
                   "github>hotchkj/renovate-config-test:pinned"
+    ],
+	"packageRules": [
+        {
+            "description": "Test regex",
+            "matchDatasources": [ "nuget" ],
+            "matchCurrentValue": "/^\\[[\\d\\.]+\\]/",
+            "enabled": false
+        }
     ]
 }
