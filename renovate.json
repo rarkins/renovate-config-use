@@ -1,52 +1,7 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "extends": [ ":dependencyDashboard", ":prHourlyLimit2", ":prConcurrentLimit10", "workarounds:all", ":semanticCommitType(chore)", ":separateMajorReleases", ":separatePatchReleases" ],
-    "addLabels": [ "renovate" ],
-    "semanticCommits": "enabled",
-    "prCreation": "not-pending",
-    "rangeStrategy": "auto",
-    "major": {
-        "dependencyDashboardApproval": true
-    },
+    "extends": [ ":dependencyDashboard" ],
     "packageRules": [
-        {
-            "description": "Anything otherwise unmatched, just update and assume no packaging impact",
-            "groupName": "Misc NuGet Dependencies",
-            "matchDatasources": [ "nuget" ],
-            "commitBody": "+semver: none"
-        },
-        {
-            "description": "Ensure cake files are processed as part of the build dependencies",
-            "groupName": "Build Dependencies",
-            "matchDatasources": [ "nuget" ],
-            "matchPaths": [ "\\.cake$" ],
-            "semanticCommitType": "build",
-            "commitBody": "+semver: none"
-        },
-        {
-            "description": "Everything in src needs its own PR and commit messaging for versioning",
-            "groupName": "Source NuGet Dependencies",
-            "matchDatasources": [ "nuget" ],
-            "matchPaths": ["src/**"],
-            "matchUpdateTypes": ["patch"],
-            "commitBody": "+semver: patch"
-        },
-        {
-            "description": "Everything in src needs its own PR and commit messaging for versioning",
-            "groupName": "Source NuGet Dependencies",
-            "matchDatasources": [ "nuget" ],
-            "matchPaths": ["src/**"],
-            "matchUpdateTypes": ["minor"],
-            "commitBody": "+semver: minor"
-        },
-        {
-            "description": "Everything in src needs its own PR and commit messaging for versioning",
-            "groupName": "Source NuGet Dependencies",
-            "matchDatasources": [ "nuget" ],
-            "matchPaths": ["src/**"],
-            "matchUpdateTypes": ["major"],
-            "commitBody": "BREAKING CHANGE +semver: major"
-        },
         {
             "description": "Test regex",
             "matchDatasources": [ "nuget" ],
