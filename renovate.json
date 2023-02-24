@@ -1,0 +1,12 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [ ":dependencyDashboard" ],
+    "packageRules": [
+        {
+            "description": "Test regex",
+            "matchDatasources": [ "nuget" ],
+            "matchCurrentValue": "/^\\[\\d\\.]+\\]/",
+            "enabled": false
+        }
+    ]
+}
